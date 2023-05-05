@@ -1,0 +1,63 @@
+--1
+SELECT * FROM dept;
+
+--2
+SELECT DEPT_ID, LAST_NAME, MANAGER_ID FROM emp;
+
+--3
+SELECT SALARY*12, LAST_NAME FROM emp;
+
+--4
+SELECT first_name IMIE, last_name "NAZWISKO", salary "M_zar", salary*12+1000 "R_zar_z_prem" FROM emp;
+
+--5
+SELECT first_name IMIE, last_name "NAZWISKO", salary "M_zar",(salary+salary*0.08)*12 "R_zar" FROM emp;
+
+--6
+SELECT last_name "NAZWISKO",(salary*12+salary*0.05) "ROCZNY DOCHÓD" FROM emp;
+
+--7
+SELECT FIRST_NAME||LAST_NAME "Imię i Nazwisko" FROM emp;
+
+--8
+SELECT FIRST_NAME ||' '||LAST_NAME||' - '||TITLE "Super Pracownicy" FROM emp;
+
+--9
+SELECT LAST_NAME, SALARY, TITLE, (SALARY*COMMISSION_PCT)/100 "PROWIZJA" FROM emp;
+-- Niektóre rekordy nie mają w kolumnie prowizja wartości, ponieważ komórki w kolumnie COMMISSION_PCT musiały mieć wartość NULL.
+
+--10
+SELECT LAST_NAME, SALARY, TITLE,NVL((SALARY*COMMISSION_PCT)/100,0) "PROWIZJA" FROM emp;
+
+--11
+SELECT DISTINCT name FROM dept;
+
+--12
+SELECT LAST_NAME, DEPT_ID, SALARY, START_DATE FROM emp ORDER BY DEPT_ID ASC, SALARY DESC;
+
+--13
+SELECT LAST_NAME, DEPT_ID, START_DATE FROM emp ORDER BY START_DATE ASC;
+
+--14
+SELECT FIRST_NAME, LAST_NAME, TITLE FROM emp WHERE LAST_NAME='Patel';
+
+--15
+SELECT LAST_NAME, START_DATE FROM emp WHERE START_DATE>TO_DATE('02-05-1991','dd-mm-yyyy') AND START_DATE <TO_DATE('15-06-1991','dd-mm-yyyy');
+
+--16
+ SELECT ID, NAME, REGION_ID FROM dept WHERE REGION_ID=1 OR REGION_ID=3;
+
+--17
+SELECT * FROM emp WHERE LAST_NAME like 'M%';
+
+--18
+SELECT * FROM emp WHERE LAST_NAME not like '%a%';
+
+--19
+SELECT LAST_NAME, START_DATE FROM emp WHERE START_DATE>= TO_DATE('01-01-1991','dd-mm-yyyy')AND START_DATE<= TO_DATE('31-12-1991','dd-mm-yyyy');
+
+--20
+ SELECT LAST_NAME FROM emp WHERE LAST_NAME like '_a%';
+
+--21
+SELECT NAME FROM customer WHERE NAME like '%s_o%';
